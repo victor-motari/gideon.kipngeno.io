@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Map with Custom Popups - JKUAT Juja</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .custom-popup {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Initialize the map centered at JKUAT Juja
+        var map = L.map('map').setView([-1.286389, 36.817223], 10); // Coordinates of JKUAT Juja
+
+        // Add a tile layer (OpenStreetMap tiles)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define marker coordinates within JKUAT Juja
+        var marker1 = L.marker([-1.290405, 36.86464]).addTo(map);
+        var marker2 = L.marker([-1.286389, 36.817223]).addTo(map);
+
+        // Custom popup content
+        var popupContent1 = '<div class="custom-popup">' +
+                                '<h3>NAIROBI CBD</h3>' +
+                                '<p>   Population: 4.397 million (2019) Elevation: 1,795 m Area code: 020 Demonym: Nairobian    </p>' 
+                                '<a href="https://example.com">More info</a>' +
+                            '</div>';
+
+        var popupContent2 = '<div class="custom-popup">' +
+                                '<h3>NAIROBI CITY</h3>' +
+                                '<p> Founded: 1899; 125 years ago GDP (2023): 30 billion USD HDI (2019):</p>' +
+                                '<a href="https://example.com">More info</a>' +
+                            '</div>';
+
+        // Bind popups to markers
+        marker1.bindPopup(popupContent1);
+        marker2.bindPopup(popupContent2);
+    </script>
+</body>
+</html>
